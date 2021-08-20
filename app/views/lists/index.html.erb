@@ -1,0 +1,41 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <a class="navbar-brand" class="rounded" href="#">
+    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1038&q=80" />
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">My lists</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New list", new_list_path, class: "nav-link"%>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="home-banner">
+  <h1>Lists of movies</h1>
+</div>
+
+<div class="container">
+  <div class="my-list">
+    <h2>My List</h2>
+    <%= link_to "Create a new list", new_list_path, class: "btn btn-flat" %>
+  </div>
+
+  <div class="cards">
+    <% @list.each do |list| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/random)">
+      <%= link_to list.name, list_path(list), class: "text-white" %>
+    </div>
+
+    <% end %>
+
+  </div>
+</div>

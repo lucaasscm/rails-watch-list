@@ -1,0 +1,50 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <a class="navbar-brand" class="rounded" href="#">
+    <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1038&q=80" />
+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "My Lists", lists_path, class: "nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New list", new_list_path, class: "nav-link"%>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="home-banner">
+  <h1><%= @list.name %></h1>
+</div>
+
+<div class="container">
+<div class="btn-movie">
+  <%= link_to "add a movie", new_list_bookmark_path(@list.id), class: "btn btn-flat" %>
+</div>
+  <div class="cards">
+    <% @bookmarks.each do |bookmark| %>
+    <div class="card">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url%>)">
+      </div>
+      <div class="title-rating">
+        <h4><%= bookmark.movie.title %></h4>
+        <p><%= bookmark.movie.rating %></p>
+        <i class="fas fa-star"></i>
+      </div>
+      <p><%= bookmark.movie.overview %></p>
+      <i class="fas fa-quote-left"></i>
+      <div class="comment-delete">
+        <p><%= bookmark.comment %></p>
+        <p><%= link_to "Delete", bookmark_path(bookmark), method: :delete, class:"text-danger" %></p>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
